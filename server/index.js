@@ -27,3 +27,21 @@ app.post('/todos', async (req, res) => {
 		console.log(e.message);
 	}
 })
+
+// get a todo
+app.get('/todos', async (req, res) => {
+	try {
+		const allTodos = await pool.query('SELECT * FROM todo')
+
+		res.json(allTodos.rows)
+	} catch(e) {
+		console.log(e.message);
+	}
+})
+
+
+// update a todo
+
+// delete a todo
+
+app.listen(CONFIG.PORT, () => console.log(`Ready at http://localhost:${CONFIG.PORT}`))
